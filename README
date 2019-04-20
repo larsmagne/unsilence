@@ -1,17 +1,18 @@
-This trivial program takes a wav file and looks for large blocks of
-silence.  If it finds these blocks, it splits the file into new files
-that doesn't containt these silences.
+This trivial program takes a sound file (wav, flac or anything else
+libsndfile can read) and looks for large blocks of silence.  If it
+finds these blocks, it splits the file into new files that doesn't
+contain these silences.
 
 The raison d'etre here is that lots and lots and lots of CDs have
-"hidden tracks" tacked on to the end of the last track.  There's
-typically the last listed song, and then there's ten minutes of
-silence, and then there's the "hidden" track.
+"hidden tracks" tacked on to the end of the last track.  Typically,
+the final listed song has ten minutes of silence, and then there's the
+"hidden" track.
 
 It gets boring really fast.
 
 Hence this program.
 
-It's copyright (c) 2003 Lars Magne Ingebrigtsen <larsi@gnus.org>.
+It's copyright (c) 2003-2019 Lars Magne Ingebrigtsen <larsi@gnus.org>.
 It's released under the GNU General Public License.
 
 You need libsndfile (version 1.x) to compile this program.  It's
