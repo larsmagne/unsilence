@@ -1,0 +1,25 @@
+CPPFLAGS=@CPPFLAGS@ -I/usr/local/include -O3 -Wall
+LDFLAGS=@LDFLAGS@ -L/usr/local/lib -lsndfile
+CC = @CC@ 
+
+all: unsilence
+
+unsilence.o: unsilence.c
+
+unsilence: unsilence.o
+	$(CC) $(CPPFLAGS) -o unsilence $(LDFLAGS) unsilence.o
+
+clean:
+	rm -f unsilence *.o
+
+out:
+	autoconf
+	( cd .. &&\
+	tar czvf unsilence/unsilence.tar.gz \
+	unsilence/README \
+	unsilence/unsilence.c unsilence/configure unsilence/configure.in \
+	unsilence/Makefile.in )
+	scp unsilence.tar.gz www@quimby.gnus.org:html/circus
+
+TAGS: *.h *.c
+	etags *.[ch]

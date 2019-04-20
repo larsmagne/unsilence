@@ -1,0 +1,28 @@
+This trivial program takes a wav file and looks for large blocks of
+silence.  If it finds these blocks, it splits the file into new files
+that doesn't containt these silences.
+
+The raison d'etre here is that lots and lots and lots of CDs have
+"hidden tracks" tacked on to the end of the last track.  There's
+typically the last listed song, and then there's ten minutes of
+silence, and then there's the "hidden" track.
+
+It gets boring really fast.
+
+Hence this program.
+
+It's copyright (c) 2003 Lars Magne Ingebrigtsen <larsi@gnus.org>.
+It's released under the GNU General Public License.
+
+You need libsndfile (version 1.x) to compile this program.  It's
+only been compiled under Debian GNU/Linux, and your mileage may vary.
+
+Parameters:
+  --length: The minimum number of seconds of silence a block of silence is.
+            Default 60.
+  --silence: How silent silence is.  The default value is 5.
+  --pattern: sprintf pattern to use when creating output files.  The default
+  	     value is "unsilence-%02d.wav".
+
+If a block of silence was found, the command returns true.  If not,
+false.

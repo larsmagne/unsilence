@@ -1,0 +1,15 @@
+AC_INIT(unsilence.c)
+AC_SET_MAKE
+AC_PROG_CC
+AC_ARG_PROGRAM
+AC_ISC_POSIX
+
+AC_CHECK_LIB(sndfile, sf_open, SNDFILE="-lsndfile")
+if test "$SNDFILE" = ""; then
+   echo "No sndfile library found."
+   exit 1
+fi
+	
+AC_CHECK_HEADERS(sndfile.h, [], [ echo "You need the sndfile header files"; exit 1 ])
+
+AC_OUTPUT(Makefile)
